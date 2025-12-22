@@ -75,14 +75,66 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <ul className="md:hidden bg-black/90 backdrop-blur-md flex flex-col items-center space-y-6 py-6">
-          <li className="hover:text-[#d6b17c] cursor-pointer transition">Home</li>
-          <li className="hover:text-[#d6b17c] cursor-pointer transition">About</li>
-          <li className="hover:text-[#d6b17c] cursor-pointer transition">Coffee</li>
-          <li className="hover:text-[#d6b17c] cursor-pointer transition">Contact</li>
-        </ul>
-      )}
+      {mobileMenuOpen && (
+  <ul className="flex flex-col space-y-4">
+    <li>
+      <Link
+        to="hero"
+        smooth={true}
+        duration={500}
+        onClick={() => setMobileMenuOpen(false)}
+        className="cursor-pointer hover:text-[#d6b17c] transition-colors"
+      >
+        Home
+      </Link>
+    </li>
+    <li>
+      <Link
+        to="about"
+        smooth={true}
+        duration={500}
+        onClick={() => setMobileMenuOpen(false)}
+        className="cursor-pointer hover:text-[#d6b17c] transition-colors"
+      >
+        About
+      </Link>
+    </li>
+    <li>
+      <Link
+        to="products"
+        smooth={true}
+        duration={500}
+        onClick={() => setMobileMenuOpen(false)}
+        className="cursor-pointer hover:text-[#d6b17c] transition-colors"
+      >
+        Coffee
+      </Link>
+    </li>
+    <li>
+      <Link
+        to="process"
+        smooth={true}
+        duration={500}
+        onClick={() => setMobileMenuOpen(false)}
+        className="cursor-pointer hover:text-[#d6b17c] transition-colors"
+      >
+        Process
+      </Link>
+    </li>
+    <li>
+      <Link
+        to="contact"
+        smooth={true}
+        duration={500}
+        onClick={() => setMobileMenuOpen(false)}
+        className="cursor-pointer hover:text-[#d6b17c] transition-colors"
+      >
+        Contact
+      </Link>
+    </li>
+  </ul>
+)}
+
     </nav>
   )
 }
