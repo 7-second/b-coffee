@@ -1,4 +1,8 @@
 import { useState } from "react"
+import AOS from "aos"
+import "aos/dist/aos.css"
+import { useEffect } from "react"
+
 import harvest from "../assets/images/harvest.jpg"
 import roast from "../assets/images/roast.jpg"
 import cup from "../assets/images/cup.jpg"
@@ -30,6 +34,10 @@ const steps = [
 export default function Process() {
   const [selectedStep, setSelectedStep] = useState(null)
 
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true })
+  }, [])
+
   return (
     <section id="process" className="py-20 bg-[#f5efe6]">
       <div className="max-w-7xl mx-auto px-6 text-center">
@@ -44,13 +52,11 @@ export default function Process() {
           {steps.map((step, idx) => (
             <div
               key={idx}
-              className="flex-1 bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition flex flex-col"
+              className="flex-1 bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:scale-105 transition flex flex-col"
+              data-aos="fade-up"
+              data-aos-delay={idx * 200}
             >
-              <img
-                src={step.img}
-                alt={step.title}
-                className="w-full h-64 object-cover"
-              />
+              <img src={step.img} alt={step.title} className="w-full h-64 object-cover"/>
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
                   <h3 className="text-2xl font-semibold text-[#4b2e1e] mb-2">
@@ -70,14 +76,14 @@ export default function Process() {
         </div>
       </div>
 
-      {/* Drawer / Modal */}
+      {/* Modal / Drawer */}
       {selectedStep && (
         <div
           className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
           onClick={() => setSelectedStep(null)}
         >
           <div
-            className="bg-white rounded-xl max-w-3xl w-full overflow-hidden shadow-2xl relative"
+            className="bg-white rounded-xl max-w-3xl w-full overflow-hidden shadow-2xl relative transform transition-all duration-300 scale-100"
             onClick={(e) => e.stopPropagation()}
           >
             <button

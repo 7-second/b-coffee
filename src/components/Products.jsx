@@ -1,4 +1,7 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import AOS from "aos"
+import "aos/dist/aos.css"
+
 import yirgacheffe from "../assets/images/yirgacheffe.jpg"
 import sidamo from "../assets/images/sidamo.jpg"
 import harrar from "../assets/images/harrar.webp"
@@ -30,6 +33,10 @@ const coffees = [
 export default function Products() {
   const [selectedCoffee, setSelectedCoffee] = useState(null)
 
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true })
+  }, [])
+
   return (
     <section id="products" className="py-20 bg-[#f5efe6]">
       <div className="max-w-7xl mx-auto px-6">
@@ -42,6 +49,8 @@ export default function Products() {
             <div
               key={idx}
               className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all flex flex-col"
+              data-aos="fade-up"
+              data-aos-delay={idx * 200}
             >
               <img
                 src={coffee.img}
@@ -67,14 +76,14 @@ export default function Products() {
         </div>
       </div>
 
-      {/* Drawer / Modal */}
+      {/* Modal / Drawer */}
       {selectedCoffee && (
         <div
           className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
           onClick={() => setSelectedCoffee(null)}
         >
           <div
-            className="bg-white rounded-xl max-w-3xl w-full overflow-hidden shadow-2xl relative"
+            className="bg-white rounded-xl max-w-3xl w-full overflow-hidden shadow-2xl relative transform transition-all duration-300 scale-100"
             onClick={(e) => e.stopPropagation()}
           >
             <button
