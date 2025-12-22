@@ -10,43 +10,32 @@ export default function Navbar() {
     <nav className="fixed w-full bg-black/70 backdrop-blur-md text-white z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
-        <h1 className="text-2xl font-bold font-serif">
+        <h1 className="text-2xl font-bold font-serif cursor-pointer hover:text-[#d6b17c] transition-colors">
           B Coffee
         </h1>
 
         {/* Desktop Links */}
-       <ul className="hidden md:flex space-x-8 font-medium">
-  <li>
-    <Link to="hero" smooth={true} duration={500} className="cursor-pointer">
-      Home
-    </Link>
-  </li>
-  <li>
-    <Link to="about" smooth={true} duration={500} className="cursor-pointer">
-      About
-    </Link>
-  </li>
-  <li>
-    <Link to="products" smooth={true} duration={500} className="cursor-pointer">
-      Coffee
-    </Link>
-  </li>
-  <li>
-    <Link to="process" smooth={true} duration={500} className="cursor-pointer">
-      Process
-    </Link>
-  </li>
-  <li>
-    <Link to="contact" smooth={true} duration={500} className="cursor-pointer">
-      Contact
-    </Link>
-  </li>
-</ul>
-
+        <ul className="hidden md:flex space-x-8 font-medium">
+          {["hero", "about", "products", "process", "contact"].map((section) => (
+            <li key={section}>
+              <Link
+                to={section}
+                smooth={true}
+                duration={500}
+                className="cursor-pointer hover:text-[#d6b17c] transition-colors"
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </Link>
+            </li>
+          ))}
+        </ul>
 
         {/* Mobile Hamburger */}
         <div className="md:hidden flex items-center">
-          <button onClick={toggleMenu} className="focus:outline-none">
+          <button
+            onClick={toggleMenu}
+            className="focus:outline-none p-2 rounded hover:bg-white/20 transition-colors"
+          >
             <svg
               className="w-8 h-8"
               fill="none"
@@ -75,66 +64,23 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-  <ul className="flex flex-col space-y-4">
-    <li>
-      <Link
-        to="hero"
-        smooth={true}
-        duration={500}
-        onClick={() => setMobileMenuOpen(false)}
-        className="cursor-pointer hover:text-[#d6b17c] transition-colors"
-      >
-        Home
-      </Link>
-    </li>
-    <li>
-      <Link
-        to="about"
-        smooth={true}
-        duration={500}
-        onClick={() => setMobileMenuOpen(false)}
-        className="cursor-pointer hover:text-[#d6b17c] transition-colors"
-      >
-        About
-      </Link>
-    </li>
-    <li>
-      <Link
-        to="products"
-        smooth={true}
-        duration={500}
-        onClick={() => setMobileMenuOpen(false)}
-        className="cursor-pointer hover:text-[#d6b17c] transition-colors"
-      >
-        Coffee
-      </Link>
-    </li>
-    <li>
-      <Link
-        to="process"
-        smooth={true}
-        duration={500}
-        onClick={() => setMobileMenuOpen(false)}
-        className="cursor-pointer hover:text-[#d6b17c] transition-colors"
-      >
-        Process
-      </Link>
-    </li>
-    <li>
-      <Link
-        to="contact"
-        smooth={true}
-        duration={500}
-        onClick={() => setMobileMenuOpen(false)}
-        className="cursor-pointer hover:text-[#d6b17c] transition-colors"
-      >
-        Contact
-      </Link>
-    </li>
-  </ul>
-)}
-
+      {isOpen && (
+        <ul className="md:hidden flex flex-col bg-black/80 backdrop-blur-md px-6 py-4 space-y-4">
+          {["hero", "about", "products", "process", "contact"].map((section) => (
+            <li key={section}>
+              <Link
+                to={section}
+                smooth={true}
+                duration={500}
+                onClick={() => setIsOpen(false)}
+                className="cursor-pointer hover:text-[#d6b17c] transition-colors block py-2"
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </nav>
   )
 }
