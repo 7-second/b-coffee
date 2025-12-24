@@ -2,39 +2,33 @@ import heroImage from "../assets/images/hero-coffee-mobile.png"
 
 export default function Hero() {
   return (
-    <section id="hero" className="pt-20 px-4">
-      <div className="max-w-md mx-auto">
+    <section
+      id="hero"
+      className="bg-[#3b1f12] pt-28 pb-16"
+    >
+      <div className="max-w-md mx-auto px-4 text-center">
 
-        {/* Hero Image with Overlay */}
-        <div className="relative rounded-xl overflow-hidden shadow-lg">
+        {/* Text */}
+        <h1 className="text-4xl font-serif text-[#f5efe6] leading-tight">
+          Experience the Essence of Ethiopia
+        </h1>
 
-          {/* Image */}
+        <p className="text-[#e6d3b1] mt-4 text-sm leading-relaxed">
+          Finest Ethiopian coffee from the land of origins — crafted with tradition and passion.
+        </p>
+
+        <button className="mt-6 bg-[#8b5a2b] text-white px-6 py-3 rounded hover:bg-[#6f4622] transition">
+          Explore Our Coffee
+        </button>
+
+        {/* Image Card */}
+        <div className="mt-10 bg-[#f5efe6] rounded-xl overflow-hidden shadow-md">
           <img
             src={heroImage}
             alt="Ethiopian Coffee Cup"
-            className="w-full h-[420px] object-cover"
+            className="w-full h-64 object-cover"
           />
-
-          {/* Dark Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-
-          {/* Text Content */}
-          <div className="absolute bottom-6 left-4 right-4 text-left">
-            <h1 className="text-3xl font-serif text-[#f5efe6] leading-tight">
-              Experience the <br /> Essence of Ethiopia
-            </h1>
-
-            <p className="text-[#e6d3b1] mt-2 text-sm leading-relaxed">
-              Finest Ethiopian coffee from the land of origins.
-            </p>
-
-            <button className="mt-4 bg-[#8b5a2b] text-white px-5 py-2.5 rounded hover:bg-[#6f4622] transition">
-              Explore Our Coffee
-            </button>
-          </div>
-
         </div>
-
       </div>
     </section>
   )
