@@ -1,40 +1,41 @@
-import heroImage from "../assets/images/hero.jpg"
+import heroImage from "../assets/images/hero-coffee-mobile.png"
 
 export default function Hero() {
-    return (
-        <section id="hero"
-            className="relative h-screen bg-cover bg-center"
-            style={{ backgroundImage: `url(${heroImage})` }}
-        >
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/60"></div>
+  return (
+    <section id="hero" className="pt-20 px-4">
+      <div className="max-w-md mx-auto">
 
-            {/* Content */}
-            <div className="relative z-10 flex h-full items-center">
-                <div className="max-w-7xl mx-auto px-6 text-white">
-                    <h1
-                        className="text-4xl md:text-6xl font-bold leading-tight"
-                        data-aos="fade-up"
-                    >
-                        Ethiopian Coffee <br />
-                        <span className="text-[#d6b17c]">From the Land of Origin</span>
-                    </h1>
+        {/* Hero Image with Overlay */}
+        <div className="relative rounded-xl overflow-hidden shadow-lg">
 
-                    <p className="mt-6 max-w-xl text-lg text-gray-200" data-aos="fade-up" data-aos-delay="200">
-                        Experience premium Ethiopian coffee, carefully sourced from
-                        the world’s most renowned coffee regions.
-                    </p>
+          {/* Image */}
+          <img
+            src={heroImage}
+            alt="Ethiopian Coffee Cup"
+            className="w-full h-[420px] object-cover"
+          />
 
-                    <div className="mt-10 flex gap-4">
-                        <button
-                            className="mt-8 bg-[#8b5a2b] px-8 py-3 rounded-lg text-lg hover:bg-[#6f4622] transition"
-                            data-aos="fade-up" data-aos-delay="400"
-                        >
-                            Explore Our Coffee
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    )
+          {/* Dark Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+          {/* Text Content */}
+          <div className="absolute bottom-6 left-4 right-4 text-left">
+            <h1 className="text-3xl font-serif text-[#f5efe6] leading-tight">
+              Experience the <br /> Essence of Ethiopia
+            </h1>
+
+            <p className="text-[#e6d3b1] mt-2 text-sm leading-relaxed">
+              Finest Ethiopian coffee from the land of origins.
+            </p>
+
+            <button className="mt-4 bg-[#8b5a2b] text-white px-5 py-2.5 rounded hover:bg-[#6f4622] transition">
+              Explore Our Coffee
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  )
 }
